@@ -1,3 +1,10 @@
+# Project Description
+
+This is a custom Swiper with arrows functionality (left and right) and
+icons on top of Swiper. Slider is done without using any third party library.
+
+I used Redux Toolkit to manage State, SCSS for Styling and Axios for Http Requests.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
