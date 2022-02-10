@@ -1,8 +1,9 @@
-import Home from './pages/Home';
+import Home from "./pages/Home";
+import "./App.scss";
 
 function App() {
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div className="App">
       <Home />
     </div>
   );

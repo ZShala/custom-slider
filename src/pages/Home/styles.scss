@@ -1,12 +1,10 @@
 .home-container {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   .title {
-    border: 1px solid red;
     font-weight: 700;
   }
 }

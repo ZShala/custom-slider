@@ -1,13 +1,11 @@
 .menu-container {
-  border: 1px solid red;
-  width: 50%;
   min-width: 300px;
+  max-width: 80%;
   overflow: auto;
   height: 150px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   margin-bottom: 20px;
 
   .menu-icon {
@@ -20,13 +18,22 @@
   .icon-image {
     margin: 0 20px;
     width: 60px;
-    border: 2px solid lightgray;
+    border: 1px solid lightgray;
     border-radius: 20px;
     cursor: pointer;
   }
+
+  .active .icon-image {
+    border: 3px solid orange;
+  }
+
   .icon-text {
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     color: rgb(78, 77, 77);
+  }
+
+  .active .icon-text {
+    font-weight: 700;
   }
 }

@@ -1,22 +1,37 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import "./style.scss";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { changeCurrentSlide } from "../../../../redux/images/images.slice";
 
 const ImageSwiper = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
+  const dispatch = useDispatch();
+  const [touchStart, setTouchStart] = useState()
+  const currentSlide = useSelector((state)=> state.imagesReducer.currentSlide);
+
   const length = slides.length;
 
   const nextSlide = () => {
-    setCurrent((prevState) => (prevState === length - 1 ? 0 : prevState + 1));
+    dispatch(changeCurrentSlide({ length: length, direction: 'next' }))
   };
 
   const prevSlide = () => {
-    setCurrent((prevState) => (prevState === 0 ? length - 1 : prevState - 1));
+    dispatch(changeCurrentSlide({ length: length, direction: 'prev' }))
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(slides) || length <= 0) {
     return null;
+  }
+
+  const handleTouchEnd = event => {
+    const { changedTouches: endTouches } = event;
+    if (endTouches[0].pageX < touchStart.pageX) {
+      dispatch(changeCurrentSlide({ length: length, direction: 'next' }))
+    } else {
+      dispatch(changeCurrentSlide({ length: length, direction: 'prev' }))
+    }
   }
 
   return (
@@ -30,13 +45,17 @@ const ImageSwiper = ({ slides }) => {
         className="right-arrow arrow right"
         onClick={nextSlide}
       />
-      <div className="slider">
 
+      <div
+        className="slider"
+        onTouchStart={touchStartEvent => setTouchStart(touchStartEvent.changedTouches[0])}
+        onTouchEnd={handleTouchEnd}
+      >
         {slides?.map((slide, index) => {
           return (
             <div
-              className={`slide ${index === current && "active"} ${
-                index < current ? "prev" : index > current ? "next" : ""
+              className={`slide ${index === currentSlide && "active"} ${
+                index < currentSlide ? "prev" : index > currentSlide ? "next" : ""
               }`}
               key={index}
             >
