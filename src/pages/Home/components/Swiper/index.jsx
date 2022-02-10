@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.scss";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
 const ImageSwiper = ({ slides }) => {
   const [current, setCurrent] = useState(0);
@@ -21,14 +21,13 @@ const ImageSwiper = ({ slides }) => {
 
   return (
     <div className="slider">
-      <BsFillArrowLeftCircleFill className="left-arrow" onClick={prevSlide} />
-      <BsFillArrowRightCircleFill className="right-arrow" onClick={nextSlide} />
+      <MdOutlineArrowBackIos className="left-arrow" onClick={prevSlide} />
+
+      <MdOutlineArrowForwardIos className="right-arrow" onClick={nextSlide} />
+
       {slides.map((slide, index) => {
         return (
-          <div
-            className={`slide ${index === current && "active"}`}
-            key={index}
-          >
+          <div className={`slide ${index === current && "active"}`} key={index}>
             {index === current && (
               <img src={slide.url} alt={slide.title} className="image" />
             )}

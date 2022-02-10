@@ -1,0 +1,31 @@
+.menu-container {
+  border: 1px solid red;
+  width: 50%;
+  min-width: 300px;
+  overflow: auto;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-image {
+    margin: 0 20px;
+    width: 60px;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .icon-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgb(78, 77, 77);
+  }
+}
