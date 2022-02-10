@@ -25,7 +25,7 @@ const ImageSwiper = ({ slides }) => {
 
       <MdOutlineArrowForwardIos className="right-arrow" onClick={nextSlide} />
 
-      {slides.map((slide, index) => {
+      {slides?.map((slide, index) => {
         return (
           <div className={`slide ${index === current && "active"}`} key={index}>
             {index === current && (
